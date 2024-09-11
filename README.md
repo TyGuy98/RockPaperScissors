@@ -1,4 +1,4 @@
-RockPaperScissors
+# RockPaperScissors
 
 Simple game which allows the user to play Rock, Paper, Scissors against the computer.
 
