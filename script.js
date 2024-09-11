@@ -113,6 +113,6 @@ function playGame() {
     
 }
 
-// Inital startr
+// Inital start
 playGame();
 
