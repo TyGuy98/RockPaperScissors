@@ -1,3 +1,17 @@
+const rockBtn = document.querySelector("#rock");
+const paperBtn = document.querySelector("#paper");
+const scissorsBtn = document.querySelector("#scissors");
+
+const results = document.querySelector("#results")
+
+
+
+
+
+
+
+
+
 
 let humanScore = 0;
 let computerScore = 0;
@@ -44,6 +58,7 @@ function checkHumanChoice (string) {
 function compareChoice (humanChoice, computerChoice) {
 
     if (humanChoice === computerChoice){
+        document.getElementById("results").textContent = "It's a tie!"
         alert(`Both have chosen ${humanChoice}, Play on!`);
     }
 
@@ -61,15 +76,17 @@ function compareChoice (humanChoice, computerChoice) {
 }
 
 // Function to play one round
-function playRound () {
+function playRound (humanChoice) {
 
-    let humanChoice;
 
-    // Loop to keep prompting user if the input is not valid 
+
+    /* Loop to keep prompting user if the input is not valid 
     do {
         let input = prompt("Please pick between Rock (R), Paper (P) or Scissors (S)!");
         humanChoice = checkHumanChoice(input);
     } while(!checkHumanChoice(humanChoice)); // Loop until a valid input is entered
+
+    */
    
     let computerChoice = getComputerChoice();
     compareChoice(humanChoice, computerChoice);
@@ -87,12 +104,38 @@ function playAgain (string) {
 
     userInput === "yes" || userInput === "y" ? playGame() :  alert("Thank you for playing!");
 }
+
+
+getResult () {
+
+}
    
+
+
+
+
+
+rockBtn.addEventListener("click", function (e) {
+    let humanChoice = "rock"
+    playRound(humanChoice);
+    });
+   
+    
+paperBtn.addEventListener("click", function (e) {
+    let humanChoice = "paper"
+    playRound(humanChoice);
+    });
+
+scissorsBtn.addEventListener("click", function (e) {
+    let humanChoice = "scissors"
+    playRound(humanChoice);
+    });
+/* 
 // FUnction to play full game
 function playGame() {
 
     // Play for 5 rounds
-    for( let i = 1; i <= 5; i++) {
+   for( let i = 1; i <= 5; i++) {
         playRound();
     }
     if (humanScore > computerScore){
@@ -112,6 +155,8 @@ function playGame() {
     
     
 }
+
+*/
 
 // Inital start
 playGame();
