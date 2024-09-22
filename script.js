@@ -86,27 +86,24 @@ function playAgain (string) {
     const para = document.createElement("p");
     para.textContent = "Would you like to play again?"
     document.body.appendChild(para);
-    const yesBtn = document.createElement("button");
-    yesBtn.textContent = "Yes";
-    const noBtn = document.createElement("button");
-    noBtn.textContent = "No";
-
-    document.body.appendChild(yesBtn);
-    document.body.appendChild(noBtn);
-
-    yesBtn.addEventListener("click", function (e) {
-        humanScore = 0;
-        computerScore = 0;
-        document.getElementById("results").textContent = "";
-        document.getElementById("score").textContent = "";
+    const playAgainBtn = document.createElement("button");
+    playAgainBtn.textContent = "Play Again";
+    
+    document.body.appendChild(playAgainBtn);
+  
+    playAgainBtn.addEventListener("click", function (e) {
         para.remove()
-        yesBtn.remove();
-        noBtn.remove(); 
-        });
+        playAgainBtn.remove();
+        resetGame();
+    });
+  
+}
 
-    noBtn.addEventListener("click", function (e) {
-        
-        });
+function resetGame() {
+    humanScore = 0;
+    computerScore = 0;
+    document.getElementById("results").textContent = "";
+    document.getElementById("score").textContent = "";
 }
 
 
