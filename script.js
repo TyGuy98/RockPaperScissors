@@ -83,48 +83,52 @@ function playRound (humanChoice) {
 
 // Function to ask if the user wants to play again
 function playAgain (string) {
-    let userInput;
-    humanScore = 0;
-    computerScore = 0;
-    document.getElementById("results").textContent = "";
+    const para = document.createElement("p");
+    para.textContent = "Would you like to play again?"
+    document.body.appendChild(para);
+    const yesBtn = document.createElement("button");
+    yesBtn.textContent = "Yes";
+    const noBtn = document.createElement("button");
+    noBtn.textContent = "No";
 
-    do {
-        userInput = prompt("Would you like to play again? (Yes/No)").toLowerCase(); 
-    } while (userInput !== "yes" && userInput !== "y" && userInput !== "no" && userInput !== "n");
+    document.body.appendChild(yesBtn);
+    document.body.appendChild(noBtn);
 
-    userInput === "yes" || userInput === "y" ? playGame() :  alert("Thank you for playing!");
+    yesBtn.addEventListener("click", function (e) {
+        humanScore = 0;
+        computerScore = 0;
+        document.getElementById("results").textContent = "";
+        document.getElementById("score").textContent = "";
+        para.remove()
+        yesBtn.remove();
+        noBtn.remove(); 
+        });
+
+    noBtn.addEventListener("click", function (e) {
+        
+        });
 }
 
 
-function checkScore() {
 
+
+function checkScore() {
     if (humanScore === 5){
         document.getElementById("results").textContent = `You beat the computer's score ${computerScore} with a score of ${humanScore}. Well done!`;
         playAgain();
     }
-
     else if (computerScore === 5) {
        document.getElementById("results").textContent = `You lost to the computer's score ${computerScore} with a score of ${humanScore}. Better luck next time!`;
        playAgain();
-
     }
-
 }
-
-
-   
-
-
-
-
 
 rockBtn.addEventListener("click", function (e) {
     let humanChoice = "rock";
     playRound(humanChoice);
     checkScore();
     });
-   
-    
+
 paperBtn.addEventListener("click", function (e) {
     let humanChoice = "paper";
     playRound(humanChoice);
@@ -136,23 +140,8 @@ scissorsBtn.addEventListener("click", function (e) {
     playRound(humanChoice);
     checkScore();
     });
-/* 
-// FUnction to play full game
-function playGame() {
 
-    // Play for 5 rounds
-   for( let i = 1; i <= 5; i++) {
-        playRound();
-    }
-    
 
-    // After 5 rounds, ask user if they want to play again
-    playAgain();
-    
-    
-}
-
-*/
 
 // Inital start
 playGame();
